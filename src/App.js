@@ -5,6 +5,7 @@ import Swal from 'sweetalert'; // Import SweetAlert
 
 const App = () => {
   const [nama, setNama] = useState('');
+  const [submittedNama, setSubmittedNama] = useState(''); 
   const [alias, setAlias] = useState([]);
   const [loading, setLoading] = useState(false);
   const [images] = useState({
@@ -30,6 +31,7 @@ const App = () => {
       const newAlias = generateAlias(nama);
       const newAliasItem = { alias: newAlias, image: images[newAlias.toLowerCase()] };
       setAlias([newAliasItem]);
+      setSubmittedNama(nama);
       setNama('');
       setLoading(false);
     }, 1000);
@@ -56,6 +58,7 @@ const App = () => {
       {alias.length > 0 && (
         <div className="alias-container">
           <div className="alias-card">
+          <p>{submittedNama} Kodam kamu adalah</p>
             <img src={alias[0].image} alt="Gambar Acak" />
             <p>{alias[0].alias}</p>
           </div>
