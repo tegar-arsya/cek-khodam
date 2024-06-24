@@ -40,6 +40,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.9); /* Transparansi pada input */
+  max-width: 100%; /* Membatasi lebar maksimum input */
 }
 
 button {
@@ -101,6 +102,7 @@ button:hover:not(:disabled) {
   transform: scale(1.05);
 }
 
+/* Tambahkan media queries untuk responsivitas */
 @media (max-width: 600px) {
   .form-card {
     width: 90%;
@@ -109,5 +111,16 @@ button:hover:not(:disabled) {
 
   .alias-card {
     width: calc(100% - 20px); /* Menyesuaikan dengan lebar layar yang lebih kecil */
+    height: auto; /* Mengatur tinggi agar otomatis */
+    margin: 10px 0; /* Memberikan jarak vertikal antar kartu */
+  }
+
+  .alias-card img {
+    height: auto; /* Mengatur tinggi gambar agar otomatis */
+    max-height: 200px; /* Mengatur tinggi maksimal untuk gambar */
+  }
+
+  .alias-card p {
+    font-size: 16px; /* Mengurangi ukuran font pada layar kecil */
   }
 }

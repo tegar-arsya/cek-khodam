@@ -37,7 +37,6 @@ const App = () => {
       setSubmittedNama(nama);
       setNama('');
       setLoading(false);
-      speakResult(nama, newAlias); // Memanggil fungsi untuk menghasilkan suara
     }, 1000);
   };
 
@@ -47,11 +46,17 @@ const App = () => {
     return `${aliasList[randomIndex]}`;
   };
 
-  // Fungsi untuk menghasilkan suara
+  // Fungsi untuk memanggil suara
   const speakResult = (nama, alias) => {
     const utterance = new SpeechSynthesisUtterance(`${nama} kodam kamu adalah ${alias}`);
     utterance.lang = 'id-ID'; // Mengatur bahasa menjadi bahasa Indonesia
     speechSynthesis.speak(utterance);
+  };
+
+  // Fungsi untuk memulai suara
+  const startSpeech = () => {
+    const newAlias = alias.length > 0 ? alias[0].alias : '';
+    speakResult(submittedNama, newAlias);
   };
 
   return (
@@ -72,6 +77,7 @@ const App = () => {
             <p>{submittedNama} Kodam kamu adalah</p>
             <img src={alias[0].image} alt="Gambar Acak" />
             <p>{alias[0].alias}</p>
+            <button onClick={startSpeech}>Putar Suara</button>
           </div>
         </div>
       )}
